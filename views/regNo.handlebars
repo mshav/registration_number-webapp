@@ -1,0 +1,43 @@
+<head>
+
+  <link rel="stylesheet" href="CSS/registration_number.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-height, initial-scale=5">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title></title>
+</head>
+
+<body style="background-color:#999966">
+
+  <nav>
+    <div class="alert alert-success" role="alert"> #Hello World |registration_number </a></div>
+  </nav>
+
+  <br>
+
+  <div class="textbox">
+    <div class="head">
+      <h1>Registration number Application</h1>
+    </div>
+    <form action="/regNo" method="post">
+
+      <br>
+      <br>
+      <br>
+      <div class="button">Name:
+        <input type="text" placeholder="Type name here" size="30" name="name" type="text" value="" required=""></input>
+        <button type="submit" class="btn-danger">Add</button>
+      </div>
+      <br>
+      <br>
+
+    </form>
+    {{#each msg}}<br><br>
+    <div class="msg">
+    <p>{{this.reg_number}}</p><br>
+    </div>
+    {{/each}}
+    <br>
+</body>
+</div>
