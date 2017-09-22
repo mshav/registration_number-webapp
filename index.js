@@ -3,10 +3,12 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const NameRoutes = require('./regNumber');
+
 const Models = require('./models');
 const mongoUrl = process.env.MONGO_DB_URL || 'mongodb://localhost/regnumber';
 const models = Models(mongoUrl);
 const nameRoutes = NameRoutes(models);
+
 
 
 var app = express();
@@ -31,7 +33,9 @@ app.use(session({
 
 
 app.get("/regNo", nameRoutes.regNo);
-app.post('/regNo', nameRoutes.regNo1);
+app.post('/regNo', nameRoutes.index);
+app.post("/regNo",nameRoutes.filterdata);
+// app.post('/filter',nameRoutes.filterData);
 
 
 var port = process.env.PORT|| 3000;

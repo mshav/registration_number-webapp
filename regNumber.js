@@ -1,72 +1,143 @@
 module.exports = function(models) {
-  plateList = [];
-  plateList2 = [];
   const regNo = function(req, res) {
     models.Plate.find({}, function(err, result) {
       if (err) {
         return done(err)
       }
-      console.log(result)
+
       res.render('regNo', {
         msg: result
       })
     })
   }
+  var regNumber=  "CA567789".match(/^CA/);
+    console.log(regNumber);
+  const index = function(req, res, done) {
+    var reg_number = req.body.name;
+    const display = " ";
 
-  const regNo1 = function(req, res, done) {
-    var name = req.body.name;
-    var regMsg = '';
-
-
-    models.Plate.create({
-      reg_number: name
-    }, function(err, result) {
+    models.Plate.findOne({
+      reg_number: req.body.name
+    }, function (err, duplicate) {
       if (err) {
         return done(err)
       }
 
-
-      result.save(function(err, result) {
-        models.Plate.find({
-
-          reg_number: name
-
-        }, function(err, result) {
-
+      if (duplicate) {
+        models.Plate.find({},function(err, allPlates) {
           if (err) {
-
             return done(err)
           }
 
-          if (name == name) {
 
-           plateList.push(name)
-           for (var i = 0; i < plateList.length; i++) {
-           for (var j = 0; j < plateList2.length; j++) {
-          if (plateList[i] == plateList2 && i != j){
+          res.render('regNo', {msg:allPlates})
 
-            return done(plateList2)
-          }
-           }
-           }
-
-           return done(plateList2)
-
-
-          }
-
-          console.log(plateList2);
-          res.render('regNo', {
-            msg: plateList.result
-          });
         })
-      })
-    });
-  }
+      }
+
+      if (!duplicate) {
+        models.Plate.create({
+          reg_number: req.body.name
+
+
+        }, function(err, result) {
+          if (err) {
+            return done(err)
+          }
+
+            models.Plate.find({},function(err, allPlates) {
+              if (err) {
+                return done(err)
+              }
+
+
+              res.render('regNo', {msg:allPlates})
+
+            })
+
+        });
+
+      }
+models.Plate.find({},function(err, result){
+ if (err) {
+
+  return done(err)
+ }
+
+})
+
+    })
+
+
+  };
+
+
+const filterdata = function(req, res, done){
+
+var placeData = {
+
+  location :req.body.location
+
+}
+if (!placeData || !placeData){
+
+  req.flash("error" ,"Please select a location");
+  res.render(reg_number);
+}else{
+
+models.Plate.find({}, function(err, thePlate){
+
+var loc = "";
+
+if (err){
+
+  return done(err)
+}
+if (placeData.locatio == 'Cape Town'){
+
+
+  loc = "CA"
+}
+
+ if (placeData.location == 'Bellville') {
+
+loc = "CY"
+
+}
+ if (placeData.location == 'Paarl') {
+
+loc = "CJ"
+
+}
+
+function mbu (input){
+
+  return input.reg_number.startsWith(loc);
+
+}
+
+var v = thePlate.filter(mbu);
+
+
+display = v;
+
+var data = {
+    reg_num: display
+}
+
+res.render('regNo', {msg:data});
+})
+
+}
+
+}
+
+
 
   return {
     regNo,
-    regNo1
+    index,
+    filterdata
   }
 
 }

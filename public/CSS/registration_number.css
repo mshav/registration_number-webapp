@@ -4,7 +4,7 @@ border-radius: -2px;
 background-color: yellow;
 height: 34px;
 width: 96px;
-/*float: right;*/
+float: center;
 }
 
 h1{
@@ -14,5 +14,10 @@ padding-left:460px;
 }
 .button{
 padding-left:560px;
+
+}
+.city{
+margin-left: 632px;
+
 
 }

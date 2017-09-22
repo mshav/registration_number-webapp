@@ -8,17 +8,18 @@
   <title></title>
 </head>
 
-<body style="background-color:#999966">
+<body style="background-color:#f4511e">
 
   <nav>
-    <div class="alert alert-success" role="alert"> #Hello World |registration_number </a></div>
+    <div class="alert alert-success" role="alert"> #Hello World |registration_number </a>
+    </div>
   </nav>
 
   <br>
 
   <div class="textbox">
     <div class="head">
-      <h1>Registration number Application</h1>
+      <h1 style="color:white">Registration number Application</h1>
     </div>
     <form action="/regNo" method="post">
 
@@ -33,11 +34,21 @@
       <br>
 
     </form>
-    {{#each msg}}<br><br>
-    <div class="msg">
-    <p>{{this.reg_number}}</p><br>
-    </div>
-    {{/each}}
-    <br>
+    <form class="city" action="/regNo" method="post">
+      Cape Town <input type="radio" name="location" value="Cape Town" required=""> Bellville <input type="radio" name="location" value="Bellville" required="">
+
+       Paarl <input type="radio"name="location" value="Paarl" required=""></form>
+       <button type="submit">show</button>
+      {{#each msg}}<br><br>
+        <div class="msg">
+          <p>{{this.reg_number}}</p><br>
+        </div>
+      {{/each}}
+      <br>
 </body>
 </div>
+{{#each reg_num}}
+                <ul class="myReg">
+                    {{this.reg_number}}<br>
+                </ul>
+                {{/each}}
