@@ -34,8 +34,8 @@ app.use(session({
 
 app.get("/regNo", nameRoutes.regNo);
 app.post('/regNo', nameRoutes.index);
-app.post("/regNo",nameRoutes.filterdata);
-// app.post('/filter',nameRoutes.filterData);
+app.post("/:city", nameRoutes.filterData);
+
 
 
 var port = process.env.PORT|| 3000;

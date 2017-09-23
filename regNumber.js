@@ -10,11 +10,10 @@ module.exports = function(models) {
       })
     })
   }
-  var regNumber=  "CA567789".match(/^CA/);
-    console.log(regNumber);
+  // var regNumber=  "CA567789".match(/^CA/);
+    // console.log(regNumber);
   const index = function(req, res, done) {
     var reg_number = req.body.name;
-    const display = " ";
 
     models.Plate.findOne({
       reg_number: req.body.name
@@ -34,6 +33,7 @@ module.exports = function(models) {
 
         })
       }
+      console.log(reg_number);
 
       if (!duplicate) {
         models.Plate.create({
@@ -71,65 +71,19 @@ models.Plate.find({},function(err, result){
 
   };
 
+const filterData = function(req, res){
 
-const filterdata = function(req, res, done){
+var reg = req.body.location
+console.log(reg);
+models.Plate.find({reg_number : {$regex: reg } },function(err, result){
 
-var placeData = {
-
-  location :req.body.location
-
+if(err){
+  console.log(err);
 }
-if (!placeData || !placeData){
-
-  req.flash("error" ,"Please select a location");
-  res.render(reg_number);
-}else{
-
-models.Plate.find({}, function(err, thePlate){
-
-var loc = "";
-
-if (err){
-
-  return done(err)
+else {
+  res.render('regNo', {msg:result})
 }
-if (placeData.locatio == 'Cape Town'){
-
-
-  loc = "CA"
-}
-
- if (placeData.location == 'Bellville') {
-
-loc = "CY"
-
-}
- if (placeData.location == 'Paarl') {
-
-loc = "CJ"
-
-}
-
-function mbu (input){
-
-  return input.reg_number.startsWith(loc);
-
-}
-
-var v = thePlate.filter(mbu);
-
-
-display = v;
-
-var data = {
-    reg_num: display
-}
-
-res.render('regNo', {msg:data});
 })
-
-}
-
 }
 
 
@@ -137,7 +91,9 @@ res.render('regNo', {msg:data});
   return {
     regNo,
     index,
-    filterdata
+    filterData
+
+
   }
 
 }
