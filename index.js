@@ -34,7 +34,9 @@ app.use(session({
 
 app.get("/regNo", nameRoutes.regNo);
 app.post('/regNo', nameRoutes.index);
-app.post("/:city", nameRoutes.filterData);
+app.post("/:city",nameRoutes.filterData);
+
+
 
 
 

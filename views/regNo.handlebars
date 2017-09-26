@@ -2,32 +2,49 @@
 
   <link rel="stylesheet" href="CSS/registration_number.css">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-height, initial-scale=5">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
   <title></title>
 </head>
 
 <body>
-
-  <nav>
-    <div class="alert alert-success" role="alert"> #Hello World |registration_number </a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Registration_number</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="regCape">Cape Town</a></li>
+        <li><a href="#">Bellville</a></li>
+        <li><a href="#">Paarl</a></li>
+      </ul>
     </div>
   </nav>
-
-  <br>
-
+  <div class="back1">
   <div class="textbox">
     <div class="head">
-      <h1>Registration number Application</h1>
+      <h1 class="header">Registration number</h1>
     </div>
+  </div>
+  <hr>
     <form action="/regNo" method="post">
 
       <br>
       <br>
-      <br>
-      <div class="button">Name:
-        <input type="text" placeholder="Type name here" size="30" name="name" type="text" value="" required=""></input>
+      <div class="coverall">
+      <div class="button">Registration-number:
+        <input type="text" placeholder="Type registration number here" size="30" name="name" type="text" value="" required=""></input>
         <button type="submit" class="btn-danger">Add</button>
       </div>
       <br>
@@ -40,13 +57,20 @@
       <label for="CJ">Paarl  <input type="radio" id="CJ"name="location" value="CJ" required=""></label>
       <label for="">All <input type="radio" id="" name="location" value="" required=""></label>
 
-      <button type="submit">show</button>
+      <button class="btn btn-danger navbar-btn">show</button>
     </form>
+  </div>
+  </div>
 </body>
-</div>
+<br>
+<br>
+<br>
+<br>
+<br>
 {{#each msg}}<br><br>
-  <div class="msg">
+  <div class="msg plates">
     <p>{{this.reg_number}}</p><br>
   </div>
 {{/each}}
+<br>
 <br>
