@@ -10,8 +10,6 @@ module.exports = function(models) {
       })
     })
   }
-  // var regNumber=  "CA567789".match(/^CA/);
-    // console.log(regNumber);
   const index = function(req, res, done) {
     var reg_number = req.body.name;
 
@@ -27,6 +25,7 @@ module.exports = function(models) {
           if (err) {
             return done(err)
           }
+
 
 
           res.render('regNo', {msg:allPlates})
