@@ -16,6 +16,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.5",
     "install": "^0.10.1",
+    "mongo": "^0.1.0",
     "mongoose": "^4.11.11"
   }
 }
